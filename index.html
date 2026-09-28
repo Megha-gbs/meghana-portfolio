@@ -3,9 +3,688 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Meghana Guthi | Portfolio</title>
+<title>Meghana Guthi | Computer Science Engineer</title>
+<meta name="description" content="Meghana Guthi is a computer science undergraduate building serverless cloud applications, multi-agent AI systems, and reliable Java software. Currently interning on an autonomous drone.">
+<meta property="og:title" content="Meghana Guthi | Computer Science Engineer">
+<meta property="og:description" content="Serverless AWS applications, multi-agent AI systems, and reliable Java software.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1224">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1224'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='36' text-anchor='middle' fill='%235eead4'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1224;
+    --panel:#0f1830;
+    --panel2:#131e3a;
+    --line:#1c2a47;
+    --line2:#2b3c5e;
+    --text:#b4c0d8;
+    --head:#e6ecf7;
+    --muted:#8895b0;
+    --faint:#5d6b89;
+    --mint:#5eead4;
+    --mint-bg:rgba(94,234,212,.10);
+    --indigo:#818cf8;
+    --amber:#fbbf24;
+    --sky:#60a5fa;
+    --green:#4ade80;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--sans); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(94,234,212,.28); color:#fff}
+  a{color:inherit; text-decoration:none}
+  ul{list-style:none; margin:0; padding:0}
+  h1,h2,h3,p{margin:0}
+  :focus-visible{outline:2px solid var(--mint); outline-offset:3px; border-radius:6px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* soft spotlight that follows the pointer */
+  .spot{
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    --x:70%; --y:35%;
+    background:radial-gradient(620px circle at var(--x) var(--y), rgba(59,89,170,.16), transparent 70%);
+  }
+
+  .shell{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:minmax(320px,42%) 1fr;
+    max-width:1440px; margin:0 auto;
+    padding:0 clamp(24px,5vw,96px);
+    column-gap:clamp(24px,4vw,72px);
+  }
+
+  /* ---------- left panel ---------- */
+  .side{
+    position:sticky; top:0; height:100vh;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:clamp(48px,11vh,112px) 0 clamp(32px,7vh,64px);
+  }
+  .side h1{
+    font-size:clamp(2.4rem,4.4vw,3.6rem); font-weight:700; line-height:1.04;
+    letter-spacing:-.035em; color:var(--head);
+  }
+  .side h2{margin-top:.9rem; font-size:1.25rem; font-weight:500; color:var(--head); letter-spacing:-.01em}
+  .tagline{margin-top:1.1rem; max-width:21rem; color:var(--muted); font-size:1.02rem; line-height:1.55}
+  .resume{
+    display:inline-flex; align-items:center; gap:.55rem; margin-top:1.6rem;
+    padding:.6rem 1.05rem; border:1px solid var(--line2); border-radius:10px;
+    color:var(--head); font-size:.9rem; font-weight:500;
+    transition:border-color .2s, background .2s, color .2s;
+  }
+  .resume:hover{border-color:var(--mint); color:var(--mint); background:var(--mint-bg)}
+  .resume svg{width:15px;height:15px}
+
+  .nav a{
+    display:flex; align-items:center; gap:1rem; padding:.55rem 0;
+    font-size:.75rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--faint);
+    transition:color .2s;
+  }
+  .nav .bar{display:block; width:2rem; height:1px; background:var(--faint); transition:width .25s, background .25s}
+  .nav a:hover,.nav a.on{color:var(--head)}
+  .nav a:hover .bar,.nav a.on .bar{width:4rem; background:var(--head)}
+
+  .social{display:flex; gap:.5rem; margin-left:-.5rem}
+  .social a{
+    width:44px; height:44px; display:grid; place-items:center; border-radius:10px;
+    color:var(--muted); transition:color .2s, background .2s;
+  }
+  .social a:hover{color:var(--head); background:rgba(148,163,184,.08)}
+  .social svg{width:22px;height:22px}
+
+  @media (max-height:720px){
+    .side{padding-top:36px; padding-bottom:24px}
+    .tagline{margin-top:.7rem; font-size:.95rem}
+    .resume{margin-top:1rem}
+    .nav a{padding:.35rem 0}
+  }
+
+  /* ---------- right column ---------- */
+  main{padding:clamp(48px,11vh,112px) 0 6rem; min-width:0}
+  section{margin-bottom:clamp(6rem,12vh,9rem); scroll-margin-top:4rem}
+  .sec-title{display:none}
+  main p{color:var(--muted); font-size:1.03rem; line-height:1.75}
+  main p + p{margin-top:1.1rem}
+  main strong{color:var(--head); font-weight:600}
+
+  /* what I build */
+  .build-h{margin:2.6rem 0 1rem; color:var(--head); font-size:1.05rem; font-weight:600}
+  .pillars{display:grid; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden}
+  .pillar{background:var(--panel); padding:1.25rem 1.35rem; display:grid; grid-template-columns:44px 1fr; gap:1rem}
+  .p-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;border:1px solid}
+  .p-ico svg{width:21px;height:21px}
+  .c-ai{color:var(--indigo);background:rgba(129,140,248,.10);border-color:rgba(129,140,248,.28)}
+  .c-cloud{color:var(--sky);background:rgba(96,165,250,.10);border-color:rgba(96,165,250,.28)}
+  .c-core{color:var(--mint);background:var(--mint-bg);border-color:rgba(94,234,212,.28)}
+  .p-head{display:flex; justify-content:space-between; align-items:center; gap:.75rem}
+  .p-head h3{color:var(--head); font-size:1.02rem; font-weight:600}
+  .p-tag{font-family:var(--mono); font-size:.66rem; color:var(--faint); border:1px solid var(--line2); border-radius:999px; padding:.15rem .6rem}
+  .pillar p{margin-top:.35rem; font-size:.93rem; line-height:1.6}
+  .pillar .tags{margin-top:.8rem}
+
+  .tags{display:flex; flex-wrap:wrap; gap:.45rem}
+  .tag{
+    font-size:.78rem; font-weight:500; color:var(--mint); background:var(--mint-bg);
+    border-radius:999px; padding:.22rem .8rem; line-height:1.5;
+  }
+  .mtag{
+    font-family:var(--mono); font-size:.76rem; color:var(--text); background:rgba(148,163,184,.07);
+    border:1px solid var(--line); border-radius:8px; padding:.22rem .6rem;
+  }
+
+  /* experience / achievements rows */
+  .entry{
+    display:grid; grid-template-columns:8.5rem 1fr; gap:1.5rem;
+    padding:1.2rem 1rem; margin:0 -1rem; border-radius:12px; transition:background .2s;
+  }
+  .entry:hover{background:rgba(148,163,184,.045)}
+  .when{font-size:.74rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); padding-top:.28rem}
+  .entry h3{color:var(--head); font-size:1.02rem; font-weight:500; line-height:1.4}
+  .entry .sub{color:var(--muted); font-size:.92rem; margin-top:.15rem}
+  .entry p{margin-top:.6rem; font-size:.95rem; line-height:1.7}
+  .entry .tags{margin-top:.9rem}
+
+  /* project filters */
+  .tabs{display:flex; flex-wrap:wrap; gap:.55rem; margin-bottom:1.4rem}
+  .tab{
+    font:inherit; font-size:.88rem; font-weight:500; color:var(--muted); cursor:pointer;
+    background:transparent; border:1px solid var(--line2); border-radius:10px; padding:.5rem .95rem;
+    transition:color .2s, border-color .2s, background .2s;
+  }
+  .tab:hover{color:var(--head)}
+  .tab.on{color:var(--head); border-color:var(--sky); background:rgba(96,165,250,.10)}
+
+  /* project cards */
+  .proj{
+    background:var(--panel); border:1px solid var(--line); border-radius:20px; overflow:hidden; margin-bottom:2.25rem;
+  }
+  .proj[hidden]{display:none}
+  .viz{
+    position:relative; padding:1rem; min-height:262px; --glow:rgba(99,102,241,.22); --wire:rgba(129,140,248,.55);
+    background:
+      radial-gradient(ellipse at 50% 55%, var(--glow), transparent 62%),
+      linear-gradient(rgba(148,163,184,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148,163,184,.045) 1px, transparent 1px),
+      #0a1226;
+    background-size:auto,30px 30px,30px 30px,auto;
+    border-bottom:1px solid var(--line);
+  }
+  .viz.cloud{--glow:rgba(251,191,36,.10); --wire:rgba(251,191,36,.35)}
+  .viz.core{--glow:rgba(94,234,212,.12); --wire:rgba(94,234,212,.45)}
+  .viz-top{display:flex; justify-content:space-between; gap:.6rem; flex-wrap:wrap}
+  .chip{
+    display:inline-flex; align-items:center; gap:.5rem; font-family:var(--mono); font-size:.68rem; color:var(--text);
+    background:rgba(7,12,26,.85); border:1px solid var(--line2); border-radius:8px; padding:.32rem .6rem;
+  }
+  .chip.ok{color:var(--green); border-color:rgba(74,222,128,.35)}
+  .chip.sky{color:var(--sky); border-color:rgba(96,165,250,.4)}
+  .chip.amber{color:var(--amber); border-color:rgba(251,191,36,.4)}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--sky);flex:none}
+  .dot.g{background:var(--green)} .dot.a{background:var(--amber)}
+  .flow{display:flex; align-items:center; justify-content:center; padding:2.1rem 0 2.7rem}
+  .wire{flex:0 0 clamp(20px,5vw,52px); height:2px; background:linear-gradient(90deg,transparent,var(--wire),transparent)}
+  .node{display:flex; flex-direction:column; align-items:center; gap:.5rem; text-align:center; min-width:96px}
+  .n-ico{
+    width:56px;height:56px;border-radius:15px;display:grid;place-items:center;border:1px solid var(--line2);
+    background:rgba(15,24,48,.9);
+  }
+  .n-ico svg{width:26px;height:26px}
+  .node b{font-size:.78rem; font-weight:600; color:var(--head); line-height:1.25}
+  .node small{display:block; font-size:.68rem; color:var(--faint); line-height:1.3}
+  .node.hero .n-ico{width:64px;height:64px;box-shadow:0 0 0 6px rgba(129,140,248,.08)}
+  .node.hero small{color:var(--indigo)}
+  .node.box{min-width:106px; padding:.85rem .6rem; border:1px solid var(--line2); border-radius:14px; background:rgba(15,24,48,.85); gap:.4rem}
+  .node.box.lit{border-color:rgba(251,191,36,.5); background:rgba(251,191,36,.06)}
+  .node.box.lit small{color:var(--amber)}
+  .node.box svg{width:20px;height:20px}
+  .stat{
+    position:absolute; left:1rem; right:1rem; bottom:1rem; display:flex; justify-content:space-between; gap:.6rem; flex-wrap:wrap;
+    font-family:var(--mono); font-size:.66rem; color:var(--muted);
+    background:rgba(7,12,26,.85); border:1px solid var(--line); border-radius:10px; padding:.5rem .75rem;
+  }
+  .stat span{display:inline-flex; align-items:center; gap:.5rem}
+  .stat .r{color:var(--sky)}
+  .stat .r.a{color:var(--amber)} .stat .r.m{color:var(--mint)}
+
+  .body{padding:1.5rem 1.6rem 1.5rem}
+  .body h3{margin-top:1.1rem; color:var(--head); font-size:1.45rem; font-weight:700; letter-spacing:-.02em; line-height:1.25}
+  .meta{margin-top:.4rem; font-size:.9rem; color:var(--indigo)}
+  .body p{margin-top:.7rem; font-size:.97rem; line-height:1.7}
+  .actions{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.4rem; padding-top:1.1rem; border-top:1px solid var(--line)}
+  .details{
+    font:inherit; font-size:.95rem; font-weight:500; color:var(--sky); background:none; border:0; padding:.3rem 0; cursor:pointer;
+    display:inline-flex; align-items:center; gap:.5rem;
+  }
+  .details svg{width:15px;height:15px;transition:transform .25s}
+  .details[aria-expanded="true"] svg{transform:rotate(90deg)}
+  .gh{
+    display:inline-flex; align-items:center; gap:.55rem; padding:.55rem 1rem; border:1px solid var(--line2); border-radius:10px;
+    color:var(--head); font-size:.92rem; font-weight:500; background:rgba(148,163,184,.05);
+    transition:border-color .2s, background .2s;
+  }
+  .gh:hover{border-color:var(--mint); background:var(--mint-bg)}
+  .gh svg{width:16px;height:16px}
+  .more{display:grid; grid-template-rows:0fr; transition:grid-template-rows .3s ease}
+  .more.open{grid-template-rows:1fr}
+  .more > div{overflow:hidden}
+  .more ul{padding-top:1.1rem; display:grid; gap:.6rem}
+  .more li{position:relative; padding-left:1.1rem; font-size:.93rem; color:var(--muted); line-height:1.65}
+  .more li::before{content:""; position:absolute; left:0; top:.7em; width:5px; height:5px; border-radius:50%; background:var(--mint)}
+
+  .repos{margin-top:.5rem; display:inline-flex; align-items:center; gap:.5rem; color:var(--head); font-weight:500; border-bottom:1px solid var(--line2); padding-bottom:2px}
+  .repos:hover{color:var(--mint); border-color:var(--mint)}
+  .repos svg{width:14px;height:14px}
+
+  footer{margin-top:1rem; font-size:.88rem; color:var(--faint); max-width:30rem; line-height:1.7}
+  footer a{color:var(--muted); border-bottom:1px solid var(--line2)}
+  footer a:hover{color:var(--mint); border-color:var(--mint)}
+
+  /* ---------- small screens ---------- */
+  @media (max-width:960px){
+    .shell{display:block; padding:0 1.25rem}
+    .side{position:static; height:auto; padding:3.5rem 0 1rem; gap:1.6rem}
+    .nav ul{display:flex; flex-wrap:wrap; gap:.25rem 1.4rem}
+    .nav .bar{display:none}
+    .nav a{padding:.4rem 0}
+    main{padding-top:2rem}
+    .sec-title{display:block; margin-bottom:1.2rem; font-size:.75rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--head)}
+    .entry{grid-template-columns:1fr; gap:.3rem; margin:0 -.75rem; padding:1rem .75rem}
+    .flow{flex-wrap:wrap; gap:.9rem; padding:2.2rem 0 4.2rem}
+    .wire{display:none}
+    .viz{min-height:0; padding-bottom:5.2rem}
+    .body{padding:1.25rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+  }
+</style>
 </head>
 <body>
-<!-- Full portfolio source is being committed from the final v9 build. -->
+<div class="spot" id="spot" aria-hidden="true"></div>
+
+<div class="shell">
+
+  <!-- ================= LEFT PANEL ================= -->
+  <header class="side">
+    <div>
+      <h1><a href="#about">Meghana Guthi</a></h1>
+      <h2>Computer Science Engineer</h2>
+      <p class="tagline">I build cloud-native systems and AI agents that scale.</p>
+      <a class="resume" href="Meghana_Guthi_Resume.pdf" download="Meghana_Guthi_Resume.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 20h16"/></svg>
+        Download resume
+      </a>
+    </div>
+
+    <nav class="nav" aria-label="Sections">
+      <ul>
+        <li><a href="#about"><span class="bar"></span>About</a></li>
+        <li><a href="#experience"><span class="bar"></span>Experience</a></li>
+        <li><a href="#projects"><span class="bar"></span>Projects</a></li>
+        <li><a href="#achievements"><span class="bar"></span>Achievements</a></li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li><a href="https://github.com/Megha-gbs" target="_blank" rel="noopener" aria-label="GitHub profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.03 3.29 9.3 7.86 10.8.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.77.12 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.08.78 2.17 0 1.56-.02 2.83-.02 3.21 0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12.02C23.5 5.74 18.27.5 12 .5Z"/></svg>
+      </a></li>
+      <li><a href="https://www.linkedin.com/in/meghanaguthi/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+      </a></li>
+    </ul>
+  </header>
+
+  <!-- ================= RIGHT COLUMN ================= -->
+  <main>
+
+    <!-- ---------- ABOUT ---------- -->
+    <section id="about" aria-labelledby="t-about">
+      <h2 class="sec-title" id="t-about">About</h2>
+      <p>I'm a computer science undergraduate at <strong>Mohan Babu University</strong> (CGPA 9.6) who likes building things end to end, from the logic in the backend to the cloud it runs on. My foundation is Java, data structures, and concurrency, and I've built on it with <strong>AWS serverless</strong> applications and <strong>multi-agent AI</strong> systems.</p>
+      <p>Right now I'm a technical intern at <strong>AatonovaZ Technologies</strong>, working on <strong>GarudaOne</strong>, an autonomous AI-powered aerial camera drone. I also compete in hackathons, solve DSA problems on LeetCode (170+ so far), and serve as a <strong>Google Student Ambassador</strong>.</p>
+
+      <h3 class="build-h">What I build</h3>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="p-ico c-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="20" r="2"/><path d="M6.6 7.4l3 3M17.4 7.4l-3 3M12 15v3"/></svg></div>
+          <div>
+            <div class="p-head"><h3>AI systems</h3><span class="p-tag">intelligence</span></div>
+            <p>Multi-agent systems, LLM applications, and AI-powered investigation tools that reason over evidence.</p>
+            <div class="tags"><span class="mtag">LangGraph</span><span class="mtag">LLMs</span><span class="mtag">FastAPI</span><span class="mtag">Cognee</span><span class="mtag">SSE</span></div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="p-ico c-cloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1A4.5 4.5 0 0117 18H7z"/></svg></div>
+          <div>
+            <div class="p-head"><h3>Cloud applications</h3><span class="p-tag">serverless</span></div>
+            <p>Scalable serverless applications on AWS, designed to scale automatically and cost nothing when idle.</p>
+            <div class="tags"><span class="mtag">AWS Lambda</span><span class="mtag">S3</span><span class="mtag">DynamoDB</span><span class="mtag">API Gateway</span><span class="mtag">IAM</span><span class="mtag">EC2</span></div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="p-ico c-core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
+          <div>
+            <div class="p-head"><h3>Software engineering</h3><span class="p-tag">core systems</span></div>
+            <p>Reliable software built on Java, data structures, algorithms, concurrency, and database-driven design.</p>
+            <div class="tags"><span class="mtag">Java</span><span class="mtag">Python</span><span class="mtag">SQL</span><span class="mtag">DSA</span><span class="mtag">Concurrency</span><span class="mtag">MySQL</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- EXPERIENCE ---------- -->
+    <section id="experience" aria-labelledby="t-exp">
+      <h2 class="sec-title" id="t-exp">Experience</h2>
+      <ul>
+        <li class="entry">
+          <div class="when">Aug 2026 to present</div>
+          <div>
+            <h3>Technical Intern, AatonovaZ Technologies</h3>
+            <p>Working with the Engineering and Research team on GarudaOne, an autonomous AI-powered aerial camera drone. I contribute to software development, computer vision, and automation workflows, and support prototyping, research, and testing across AI/ML and embedded systems, including debugging issues found during testing.</p>
+            <div class="tags"><span class="tag">Computer vision</span><span class="tag">AI/ML</span><span class="tag">Embedded systems</span><span class="tag">Automation</span></div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when">Mar to Apr 2025</div>
+          <div>
+            <h3>Research Intern, Mohan Babu University</h3>
+            <p>Built Java modules that analyze more than 120,000 kWh of institutional energy data across HVAC, lighting, computing, and IoT infrastructure. Implemented load factor and utilization analysis algorithms and wrote technical reports on where energy was being wasted.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Data analysis</span><span class="tag">IoT</span></div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when">2024 to 2028</div>
+          <div>
+            <h3>B.Tech, Computer Science and Engineering, Mohan Babu University</h3>
+            <div class="sub">CGPA 9.6.</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ---------- PROJECTS ---------- -->
+    <section id="projects" aria-labelledby="t-proj">
+      <h2 class="sec-title" id="t-proj">Projects</h2>
+
+      <div class="tabs" role="group" aria-label="Filter projects">
+        <button class="tab on" data-filter="all" aria-pressed="true">All projects</button>
+        <button class="tab" data-filter="hackathon" aria-pressed="false">Hackathon</button>
+        <button class="tab" data-filter="ai" aria-pressed="false">AI and agents</button>
+        <button class="tab" data-filter="cloud" aria-pressed="false">Cloud and serverless</button>
+        <button class="tab" data-filter="java" aria-pressed="false">Core Java</button>
+      </div>
+
+      <!-- ===== The Case File (hackathon) ===== -->
+      <article class="proj" data-cat="hackathon ai">
+        <div class="viz">
+          <div class="viz-top">
+            <span class="chip"><i class="dot"></i>LANGGRAPH // AGENT_MESH</span>
+            <span class="chip ok">COGNEE: ACTIVE</span>
+          </div>
+          <div class="flow">
+            <div class="node">
+              <div class="n-ico" style="color:var(--sky)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+              <div><b>Evidence</b><small>Docs and logs</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node hero">
+              <div class="n-ico" style="color:var(--indigo);border-color:rgba(129,140,248,.5)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="20" r="2"/><path d="M6.6 7.4l3 3M17.4 7.4l-3 3M12 15v3"/></svg></div>
+              <div><b>3 AI agents</b><small>Detective, Analyst, Chief</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node">
+              <div class="n-ico" style="color:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></svg></div>
+              <div><b>Cognee memory</b><small>Graph and vector</small></div>
+            </div>
+          </div>
+          <div class="stat"><span><i class="dot g"></i>CROSS-CASE CONTRADICTION DETECTION</span><span class="r">SSE STREAMING LIVE</span></div>
+        </div>
+        <div class="body">
+          <div class="tags"><span class="mtag">FastAPI</span><span class="mtag">LangGraph</span><span class="mtag">Groq Llama 3.3</span><span class="mtag">Cognee</span><span class="mtag">SSE</span></div>
+          <h3>The Case File</h3>
+          <div class="meta">WeMakeDevs × Cognee Hackathon 2026, Team FEMTECH</div>
+          <p>A multi-agent AI investigation system that reasons across evidence, finds contradictions between cases, and streams its work live as it goes.</p>
+          <div class="actions">
+            <button class="details" aria-expanded="false"><span>View technical details</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a class="gh" href="https://github.com/Megha-gbs/FEMTECH-main" target="_blank" rel="noopener"><span>GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+          <div class="more"><div><ul>
+            <li>Three specialised agents (Detective, Analyst, and Chief) are orchestrated with LangGraph.</li>
+            <li>Cognee's hybrid graph-vector memory lets the agents spot contradictions across separate cases.</li>
+            <li>A FastAPI backend streams agent output in real time using Server-Sent Events.</li>
+            <li>Co-built with Team FEMTECH at the WeMakeDevs × Cognee Hackathon 2026. I also wrote a technical blog on the architecture.</li>
+          </ul></div></div>
+        </div>
+      </article>
+
+      <!-- ===== DepthWizard (hackathon) ===== -->
+      <article class="proj" data-cat="hackathon">
+        <div class="viz">
+          <div class="viz-top">
+            <span class="chip"><i class="dot a"></i>ISRO SAC // GEOSPATIAL_AI</span>
+            <span class="chip ok">3D DSM: ACTIVE</span>
+          </div>
+          <div class="flow">
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m6 15 4-5 3 3 2-2 3 4"/></svg>
+              <div><b>Satellite image</b><small>Single optical view</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box lit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-5 5 3 7-8"/><path d="M3 21h18"/><path d="M6 18v3M10 15v6M14 17v4M18 11v10"/></svg>
+              <div><b>DepthWizard</b><small>Monocular depth</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 16 8-12 8 12-8 4-8-4z"/><path d="M4 16 12 20l8-4M8 10l8 4M12 4v16"/></svg>
+              <div><b>3D DSM</b><small>Calibrated surface</small></div>
+            </div>
+          </div>
+          <div class="stat"><span><i class="dot g"></i>COPERNICUS DEM GLO-30 / SRTM 30M CALIBRATION</span><span class="r">REAL-TIME 3D FLYTHROUGH</span></div>
+        </div>
+        <div class="body">
+          <div class="tags"><span class="mtag">Computer Vision</span><span class="mtag">Monocular Depth</span><span class="mtag">Geospatial AI</span><span class="mtag">FastAPI</span><span class="mtag">Three.js</span></div>
+          <h3>DepthWizard — Single-View Height Estimation &amp; 3D Flythrough</h3>
+          <div class="meta">ISRO SAC National Hackathon — Problem #26175</div>
+          <p>Reconstructs high-precision 3D Digital Surface Models from single optical satellite images, with scale calibration against Copernicus DEM GLO-30 / SRTM 30m and an interactive real-time 3D flythrough visualizer.</p>
+          <div class="actions">
+            <button class="details" aria-expanded="false"><span>View technical details</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a class="gh" href="https://github.com/Smruthi2006/DepthWizard" target="_blank" rel="noopener"><span>GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+          <div class="more"><div><ul>
+            <li>Estimates scene depth and terrain elevation from a single optical satellite image.</li>
+            <li>Uses Copernicus DEM GLO-30 / SRTM 30m references for scale calibration and elevation validation.</li>
+            <li>Generates an interactive 3D Digital Surface Model and real-time flythrough experience using a web-based visualizer.</li>
+          </ul></div></div>
+        </div>
+      </article>
+
+      <!-- ===== Autonomous Perception for Unstructured Indian Roads (hackathon) ===== -->
+      <article class="proj" data-cat="hackathon ai">
+        <div class="viz cloud">
+          <div class="viz-top">
+            <span class="chip"><i class="dot a"></i>EDGE AI // AUTONOMOUS_PERCEPTION</span>
+            <span class="chip sky">&gt;32 FPS</span>
+          </div>
+          <div class="flow">
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="m12 15 3-5 4 5"/></svg>
+              <div><b>Road camera</b><small>Live video feed</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box lit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5M8 17h8"/></svg>
+              <div><b>YOLOv8</b><small>Object detection</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18 10 6l4 8 6-10"/><path d="M3 21h18"/></svg>
+              <div><b>Drivable corridor</b><small>Segmentation + depth</small></div>
+            </div>
+          </div>
+          <div class="stat"><span><i class="dot g"></i>CATTLE / PEDESTRIAN / AUTO-RICKSHAW DETECTION</span><span class="r a">ROS2 EDGE PIPELINE</span></div>
+        </div>
+        <div class="body">
+          <div class="tags"><span class="mtag">Deep Learning</span><span class="mtag">YOLOv8</span><span class="mtag">Semantic Segmentation</span><span class="mtag">Edge AI</span><span class="mtag">ROS2</span></div>
+          <h3>Autonomous Perception for Unstructured Indian Roads</h3>
+          <div class="meta">Smart India Hackathon — Autonomous Driving / Edge AI</div>
+          <p>An edge-AI perception suite for chaotic, unpaved Indian roads without lane markings. Detects cattle, pedestrians and auto-rickshaws while segmenting a drivable corridor and producing real-time obstacle distance vectors at &gt;32 FPS.</p>
+          <div class="actions">
+            <button class="details" aria-expanded="false"><span>View technical details</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a class="gh" href="https://github.com/Megha-gbs/Advitiya_Adaptive_path_planning" target="_blank" rel="noopener"><span>GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+          <div class="more"><div><ul>
+            <li>YOLOv8 detects key road participants including cattle, pedestrians and auto-rickshaws.</li>
+            <li>Semantic segmentation identifies a drivable corridor even when conventional lane markings are absent.</li>
+            <li>Edge inference produces obstacle-distance vectors at more than 32 FPS for responsive autonomous navigation.</li>
+            <li>Designed for the visual and traffic complexity of unstructured Indian roads.</li>
+          </ul></div></div>
+        </div>
+      </article>
+
+      <!-- ===== TalentReach (cloud) ===== -->
+      <article class="proj" data-cat="cloud">
+        <div class="viz cloud">
+          <div class="viz-top">
+            <span class="chip"><i class="dot a"></i>AWS // SERVERLESS_ARCHITECTURE</span>
+            <span class="chip sky">ZERO_IDLE_COMPUTE</span>
+          </div>
+          <div class="flow">
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 010 8.4M7.8 16.2a6 6 0 010-8.4M19 5a10 10 0 010 14M5 19a10 10 0 010-14"/></svg>
+              <div><b>API Gateway</b><small>REST endpoints</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box lit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+              <div><b>AWS Lambda</b><small>Stateless logic</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+              <div><b>DynamoDB</b><small>Applicant records</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1A4.5 4.5 0 0117 18H7z"/></svg>
+              <div><b>Amazon S3</b><small>Resume storage</small></div>
+            </div>
+          </div>
+          <div class="stat"><span><i class="dot g"></i>ADMIN DASHBOARD: SEARCH, FILTER, ANALYTICS</span><span class="r a">PAY-PER-USE SCALING</span></div>
+        </div>
+        <div class="body">
+          <div class="tags"><span class="mtag">AWS Lambda</span><span class="mtag">Amazon S3</span><span class="mtag">DynamoDB</span><span class="mtag">API Gateway</span><span class="mtag">HTML/CSS</span></div>
+          <h3>TalentReach</h3>
+          <div class="meta">Serverless job application portal, 2026</div>
+          <p>A fully serverless job application platform on AWS, with resume uploads, a multi-step application flow, and a recruiter dashboard, built to scale on demand.</p>
+          <div class="actions">
+            <button class="details" aria-expanded="false"><span>View technical details</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a class="gh" href="https://github.com/Megha-gbs/Job-application-portal" target="_blank" rel="noopener"><span>GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+          <div class="more"><div><ul>
+            <li>The whole architecture is serverless: API Gateway, Lambda, DynamoDB, and S3, with automatic scaling and pay-per-use pricing.</li>
+            <li>A multi-step application workflow handles resume uploads and REST-style backend calls.</li>
+            <li>An admin dashboard gives recruiters search, filtering, and analytics over applicants.</li>
+          </ul></div></div>
+        </div>
+      </article>
+
+      <!-- ===== Student Management System (core java) ===== -->
+      <article class="proj" data-cat="java">
+        <div class="viz core">
+          <div class="viz-top">
+            <span class="chip"><i class="dot g"></i>JAVA // DAO_PATTERN</span>
+            <span class="chip ok">CRUD: VALIDATED</span>
+          </div>
+          <div class="flow">
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg>
+              <div><b>Java app</b><small>Input and validation</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box lit" style="border-color:rgba(94,234,212,.5);background:rgba(94,234,212,.06)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+              <div><b>DAO layer</b><small style="color:var(--mint)">CRUD methods</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 01-12 0V8zM12 17v4"/></svg>
+              <div><b>JDBC</b><small>Prepared statements</small></div>
+            </div>
+            <div class="wire"></div>
+            <div class="node box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+              <div><b>MySQL</b><small>Student records</small></div>
+            </div>
+          </div>
+          <div class="stat"><span><i class="dot g"></i>MODULAR EXCEPTION HANDLING</span><span class="r m">CORE JAVA, NO FRAMEWORK</span></div>
+        </div>
+        <div class="body">
+          <div class="tags"><span class="mtag">Java</span><span class="mtag">JDBC</span><span class="mtag">MySQL</span><span class="mtag">DAO pattern</span></div>
+          <h3>Student Management System</h3>
+          <div class="meta">Database-driven CRUD application, 2026</div>
+          <p>A student records application in core Java, structured around the DAO pattern with input validation and clean error handling.</p>
+          <div class="actions">
+            <button class="details" aria-expanded="false"><span>View technical details</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a class="gh" href="https://github.com/Megha-gbs/Student-Management-System-Java-JDBC-MySQL-" target="_blank" rel="noopener"><span>GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+          <div class="more"><div><ul>
+            <li>Built with core Java, JDBC, and MySQL, with database access isolated behind the DAO pattern.</li>
+            <li>Uses PreparedStatements for every query.</li>
+            <li>Includes modular exception handling and input validation.</li>
+          </ul></div></div>
+        </div>
+      </article>
+
+      <!-- To add another project, copy an <article class="proj"> block above and change its data-cat
+           (hackathon, ai, cloud, java) so the filter tabs pick it up. -->
+
+      <a class="repos" href="https://github.com/Megha-gbs?tab=repositories" target="_blank" rel="noopener">
+        View all repositories on GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </section>
+
+    <!-- ---------- ACHIEVEMENTS ---------- -->
+    <section id="achievements" aria-labelledby="t-ach">
+      <h2 class="sec-title" id="t-ach">Achievements</h2>
+      <ul>
+        <li class="entry"><div class="when">2026</div><div><h3>Google Student Ambassador</h3></div></li>
+        <li class="entry"><div class="when">2025</div><div><h3>Oracle Cloud Infrastructure Generative AI Professional</h3><div class="sub">Certification</div></div></li>
+        <li class="entry"><div class="when">2026</div><div><h3>JPMorgan Chase Software Engineering Job Simulation</h3><div class="sub">Completed through Forage</div></div></li>
+        <li class="entry"><div class="when">Course</div><div><h3>Google × Kaggle AI Agents Intensive</h3></div></li>
+        <li class="entry"><div class="when">2K25</div><div><h3>2nd place, Project Expo at Technovation 2K25</h3></div></li>
+        <li class="entry"><div class="when">Leadership</div><div><h3>Team Lead, XHORIZON 24-Hour Hackathon</h3><div class="sub">Also co-founder of Tech Fusion Track, CETA Club</div></div></li>
+        <li class="entry"><div class="when">Practice</div><div><h3>170+ DSA problems solved on LeetCode</h3><div class="sub">Plus more challenges on HackerRank, and 43+ public GitHub repositories</div></div></li>
+      </ul>
+    </section>
+
+    <footer>
+      I'm open to full stack and cloud engineering roles and internships. You can reach me at
+      <a href="mailto:meghanaguthi0303@gmail.com">meghanaguthi0303@gmail.com</a> or on
+      <a href="https://www.linkedin.com/in/meghanaguthi/" target="_blank" rel="noopener">LinkedIn</a>.
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // spotlight follows the pointer
+  var spot = document.getElementById('spot');
+  window.addEventListener('pointermove', function (e) {
+    spot.style.setProperty('--x', e.clientX + 'px');
+    spot.style.setProperty('--y', e.clientY + 'px');
+  }, { passive: true });
+
+  // highlight the current section in the left nav
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function spy() {
+    var idx = 0, line = window.innerHeight * 0.35;
+    sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < line) idx = i; });
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) idx = sections.length - 1;
+    links.forEach(function (a, i) { a.classList.toggle('on', i === idx); });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('resize', spy);
+  spy();
+
+  // project filters
+  var tabs = document.querySelectorAll('.tab');
+  var cards = document.querySelectorAll('.proj');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      var f = t.getAttribute('data-filter');
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.classList.toggle('on', on);
+        x.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      cards.forEach(function (c) {
+        c.hidden = !(f === 'all' || c.getAttribute('data-cat').split(' ').indexOf(f) > -1);
+      });
+    });
+  });
+
+  // technical details toggles
+  document.querySelectorAll('.details').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var more = b.closest('.body').querySelector('.more');
+      var open = more.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      b.querySelector('span').textContent = open ? 'Hide technical details' : 'View technical details';
+    });
+  });
+</script>
 </body>
 </html>
